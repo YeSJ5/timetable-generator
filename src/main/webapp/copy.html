@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .news-container {
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .news-content {
+      position: absolute;
+      animation: scrollNews 10s linear infinite;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .news-item {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    .news-item:hover {
+      background-color: #555;
+    }
+
+    @keyframes scrollNews {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="news-container">
+    <div class="news-content">
+      <div class="news-item">Breaking News 1: This is the first news headline.</div>
+      <div class="news-item">Breaking News 2: Another important news story here.</div>
+      <div class="news-item">Breaking News 3: Stay tuned for the latest updates.</div>
+      <div class="news-item">Breaking News 4: More news coming your way.</div>
+      <!-- Add more news items as needed -->
+    </div>
+  </div>
+</body>
+</html>

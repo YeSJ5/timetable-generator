@@ -1,0 +1,485 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ISE Department Configuration
+model Department {
+  id          String    @id @default(cuid())
+  name        String    @default("ISE")
+  code        String    @unique @default("ISE")
+  description String?
+  years       Year[]
+  sections    Section[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Year {
+  id           String     @id @default(cuid())
+  number       Int        // 2, 3, 4
+  name         String     // "Second Year", "Third Year", "Fourth Year"
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  departmentId String
+  sections     Section[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@unique([departmentId, number])
+}
+
+model Batch {
+  id        String   @id @default(cuid())
+  name      String // "Batch 1", "Batch 2", etc.
+  section   Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId String
+  size      Int? // number of students
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([sectionId, name])
+}
+
+model GlobalScheduleRules {
+  id                      String   @id @default(cuid())
+  minTeachingHoursPerWeek Int?     @default(16)
+  maxTeachingHoursPerWeek Int?     @default(30)
+  minLabsPerWeek          Int?     @default(2)
+  maxLabsPerWeek          Int?     @default(8)
+  maxConsecutiveTheory    Int?     @default(3)
+  forcedGapRules          String? // JSON: [{day: "Friday", afterTime: "15:30"}]
+  maxFullDaysPerWeek      Int?     @default(5)
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model DailyStructure {
+  id                 String   @id @default(cuid())
+  periodCount        Int      @default(6)
+  periodDurations    String // JSON: [60, 60, 60, ...] in minutes
+  shortBreakTime     Int      @default(15) // minutes
+  lunchBreakTime     Int      @default(45)
+  hasHalfDay         Boolean  @default(false)
+  halfDayOnDays      String? // JSON: ["Friday", "Saturday"]
+  halfDayPeriodCount Int?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Teacher {
+  id                       String                  @id @default(cuid())
+  name                     String
+  initials                 String?
+  email                    String?
+  preferredTime            String? // "Morning" | "Afternoon" | null
+  preferredTimeSlots       String? // JSON array of preferred slot indices
+  unavailableSlots         String? // JSON: {day: [slot1, slot2, ...]}
+  preferredRooms           String? // JSON array of room IDs
+  skillTags                String? // JSON array of skills: ["ML", "DBMS", "Networks"]
+  availabilityMatrix       String? // JSON: {day: {slot: "available"|"preferred"|"not_available"|"no_labs"}}
+  maxClassesPerDay         Int?                    @default(4)
+  maxDailyHours            Int? // max hours per day
+  maxClassesPerWeek        Int?
+  maxLabsPerDay            Int?                    @default(2)
+  maxLabsPerWeek           Int?
+  maxHoursPerWeek          Int?
+  maxWeeklyHours           Int? // alias for maxHoursPerWeek
+  minimumGapBetweenClasses Int?                    @default(0) // minutes
+  avoidBackToBack          Boolean?                @default(false)
+  avoidFirstPeriod         Boolean?                @default(false)
+  avoidLastPeriod          Boolean?                @default(false)
+  gapPreference            String? // "prefer_gaps" | "prefer_consecutive" | "no_preference"
+  consecutivePreference    Boolean?                @default(false)
+  labPreferences           String? // JSON: {continuousSlots: 2, allowedRooms: [], allowedSections: []}
+  daysOff                  String? // JSON: ["Saturday", "Sunday"]
+  mappings                 TeacherSubjectMapping[]
+  labs                     Lab[]
+  constraints              TeacherConstraint?
+  createdBy                String? // user ID for audit
+  notes                    String? // admin notes
+  createdAt                DateTime                @default(now())
+  updatedAt                DateTime                @updatedAt
+}
+
+model TeacherConstraint {
+  id          String   @id @default(cuid())
+  teacher     Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  teacherId   String   @unique
+  customRules String? // JSON: flexible constraint storage
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Subject {
+  id                    String                  @id @default(cuid())
+  code                  String                  @unique
+  name                  String
+  hoursPerWeek          Int
+  lectureHoursPerWeek   Int? // theory hours
+  labHoursPerWeek       Int? // lab hours
+  labRequired           Boolean                 @default(false)
+  type                  String                  @default("theory") // "theory" | "lab" | "mixed"
+  spreadAcrossWeek      Boolean?                @default(true)
+  preferredDistribution String? // JSON: {day: hours} preferred spread
+  noConsecutiveDays     Boolean?                @default(false)
+  avoidSamePeriodDaily  Boolean?                @default(false)
+  preferredTimes        String? // JSON array of preferred time slots
+  morningPreference     Boolean? // null = flexible, true = morning only, false = afternoon only
+  coRequisites          String? // JSON array of subject codes that must be scheduled together
+  dependencies          String? // JSON array of subject codes that should precede this
+  labConstraints        String? // JSON: {mustBeContinuous: boolean, allowedRooms: string[], requiredTeachers: string[]}
+  allowedRooms          String? // JSON: array of room IDs
+  requiredTeachers      String? // JSON: array of teacher IDs
+  allowedDays           String? // JSON: array of days
+  mappings              TeacherSubjectMapping[]
+  constraints           SubjectConstraint?
+  createdBy             String? // user ID for audit
+  notes                 String? // admin notes
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime                @updatedAt
+}
+
+model SubjectConstraint {
+  id          String   @id @default(cuid())
+  subject     Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  subjectId   String   @unique
+  customRules String? // JSON: flexible constraint storage
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Section {
+  id                      String                  @id @default(cuid())
+  name                    String                  @unique
+  year                    Year?                   @relation(fields: [yearId], references: [id], onDelete: SetNull)
+  yearId                  String?
+  department              Department?             @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  departmentId            String?
+  batches                 Batch[]
+  maxHoursPerDay          Int?                    @default(6)
+  maxConsecutiveHours     Int?                    @default(3)
+  minimumBreaks           Int?                    @default(2)
+  noLongGaps              Boolean?                @default(false)
+  earlySchedulePreference Boolean?                @default(false)
+  lateSchedulePreference  Boolean?                @default(false)
+  optionalFirstHour       Boolean?                @default(false)
+  avoidBackToBackLabs     Boolean?                @default(false)
+  preferredStart          String? // "early" | "late" | "flexible"
+  mappings                TeacherSubjectMapping[]
+  labs                    Lab[]
+  timetables              Timetable[]
+  rules                   SectionWorkloadRules?
+  createdBy               String? // user ID for audit
+  notes                   String? // admin notes
+  createdAt               DateTime                @default(now())
+  updatedAt               DateTime                @updatedAt
+}
+
+model SectionWorkloadRules {
+  id          String   @id @default(cuid())
+  section     Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId   String   @unique
+  customRules String? // JSON: flexible rule storage
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Room {
+  id                   String   @id @default(cuid())
+  name                 String   @unique
+  type                 String // "lecture" | "lab" | "seminar"
+  capacity             Int?     @default(50)
+  equipment            String? // JSON array of equipment
+  availability         String? // JSON: {day: {slot: boolean}}
+  maintenanceWindows   String? // JSON: [{start: date, end: date, reason: string}]
+  unavailableDates     String? // JSON: array of date strings
+  labs                 Lab[]
+  priority             Int      @default(0) // for priority-based assignment
+  teacherCompatibility String? // JSON: {teacherId: boolean}
+  subjectCompatibility String? // JSON: {subjectId: boolean} - which subjects can use this room
+  createdBy            String? // user ID for audit
+  notes                String? // admin notes
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model TeacherSubjectMapping {
+  id        String   @id @default(cuid())
+  teacher   Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  teacherId String
+  subject   Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  subjectId String
+  section   Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([teacherId, subjectId, sectionId])
+}
+
+model Lab {
+  id            String   @id @default(cuid())
+  name          String
+  durationSlots Int
+  teacher       Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  teacherId     String
+  section       Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId     String
+  room          Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  roomId        String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Timetable {
+  id             String             @id @default(cuid())
+  section        Section            @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId      String
+  json           String
+  version        Int                @default(1)
+  score          Float?
+  healthScore    Float? // 0-100 based on conflicts, spread, balance
+  generatedAt    DateTime           @default(now())
+  generationMode String? // "strict" | "adaptive" | "free"
+  priorities     String? // JSON: {teacherPriority, roomUtilization, studentWorkload, subjectSpread, labPlacement, conflictAvoidance}
+  versionHistory TimetableVersion[]
+  manualEdits    ManualEdit[]
+  conflicts      Conflict[]
+  locked         Boolean            @default(false)
+  lockReason     String?
+  createdBy      String? // user ID
+  notes          String? // admin notes
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  @@unique([sectionId, version])
+  @@index([sectionId])
+}
+
+model TimetableVersion {
+  id          String    @id @default(cuid())
+  timetable   Timetable @relation(fields: [timetableId], references: [id], onDelete: Cascade)
+  timetableId String
+  version     Int
+  json        String
+  score       Float?
+  healthScore Float?
+  generatedAt DateTime  @default(now())
+  notes       String?
+  changeLog   String? // JSON: what changed from previous version
+  diff        String? // JSON: detailed diff from previous version
+  createdBy   String? // user ID
+  createdAt   DateTime  @default(now())
+
+  @@unique([timetableId, version])
+  @@index([timetableId])
+}
+
+model ManualEdit {
+  id          String    @id @default(cuid())
+  timetable   Timetable @relation(fields: [timetableId], references: [id], onDelete: Cascade)
+  timetableId String
+  fromDay     String
+  fromSlot    String
+  toDay       String
+  toSlot      String
+  conflicts   String? // JSON: detected conflicts after edit
+  editedAt    DateTime  @default(now())
+  undone      Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  @@index([timetableId])
+}
+
+model LockedSlot {
+  id          String   @id @default(cuid())
+  timetableId String?
+  sectionId   String? // if null, applies to all sections
+  day         String
+  slot        String
+  reason      String? // "holiday" | "exam" | "admin_locked" | "subject_pinned" | "teacher_locked" | "room_unavailable"
+  subject     String?
+  teacher     String?
+  room        String?
+  lockedBy    String? // user ID
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([sectionId, day, slot])
+  @@index([timetableId])
+}
+
+model ExamDay {
+  id        String   @id @default(cuid())
+  date      String
+  sections  String? // JSON: array of section IDs
+  reason    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Holiday {
+  id          String   @id @default(cuid())
+  date        String
+  name        String
+  isRecurring Boolean  @default(false) // for annual holidays
+  sections    String? // JSON: array of section IDs (null = all sections)
+  createdBy   String? // user ID
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([date])
+}
+
+model ConflictHistory {
+  id           String    @id @default(cuid())
+  timetableId  String
+  conflictType String // "teacher" | "room" | "subject" | "section"
+  description  String
+  day          String?
+  slot         String?
+  severity     String    @default("medium") // "low" | "medium" | "high"
+  resolvedAt   DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+model AIExplanation {
+  id          String   @id @default(cuid())
+  timetableId String
+  slotId      String // formatted as "day_slot"
+  explanation String // why was class assigned to this slot
+  reasoning   String? // optimization choices
+  issues      String? // JSON: potential issues
+  suggestions String? // JSON: improvement suggestions
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ScheduleHealthMetrics {
+  id                  String   @id @default(cuid())
+  timetableId         String
+  conflictScore       Float // 0-100 (lower is better)
+  spreadQualityScore  Float // 0-100 (higher is better)
+  teacherSatisfaction Float // 0-100
+  labCorrectness      Float // 0-100
+  workloadBalance     Float // 0-100
+  overallHealthScore  Float // weighted average
+  calculatedAt        DateTime @default(now())
+  createdAt           DateTime @default(now())
+}
+
+// Slot definition model
+model Slot {
+  id        String   @id @default(cuid())
+  day       String // "Mon", "Tue", etc.
+  startTime String // "09:00"
+  duration  Int // minutes
+  isBreak   Boolean  @default(false)
+  breakType String? // "short" | "lunch" | null
+  order     Int // order within day
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([day, startTime])
+}
+
+// Generation job for background processing
+model GenerationJob {
+  id          String    @id @default(cuid())
+  status      String    @default("pending") // "pending" | "running" | "completed" | "failed" | "cancelled"
+  progress    Float     @default(0) // 0-100
+  sectionIds  String // JSON array of section IDs
+  options     String? // JSON: generation options
+  result      String? // JSON: generation result
+  metrics     String? // JSON: {iterations, conflictsResolved, timePerSlot}
+  error       String?
+  startedAt   DateTime?
+  completedAt DateTime?
+  cancelledAt DateTime?
+  createdBy   String? // user ID
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+// Constraint model for runtime constraint registration
+model Constraint {
+  id         String   @id @default(cuid())
+  type       String // "hard" | "soft"
+  name       String
+  entityType String // "teacher" | "subject" | "room" | "section" | "global"
+  entityId   String? // ID of the entity (null for global)
+  payload    String // JSON: constraint definition
+  weight     Float    @default(1.0) // for soft constraints
+  isActive   Boolean  @default(true)
+  createdBy  String? // user ID
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([type, entityType, entityId])
+  @@index([isActive])
+}
+
+// Enhanced Conflict model
+model Conflict {
+  id             String     @id @default(cuid())
+  timetableId    String?
+  type           String // "teacher" | "room" | "subject" | "section" | "capacity" | "time"
+  severity       String     @default("medium") // "low" | "medium" | "high" | "critical"
+  description    String
+  entities       String // JSON: {teacherIds: [], roomIds: [], subjectIds: [], sectionIds: []}
+  day            String?
+  slot           String?
+  resolved       Boolean    @default(false)
+  resolvedAt     DateTime?
+  resolvedBy     String? // user ID
+  resolution     String? // JSON: how it was resolved
+  suggestedFixes String? // JSON: [{action: string, confidence: float, rationale: string}]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  Timetable      Timetable? @relation(fields: [timetableId], references: [id])
+
+  @@index([timetableId, resolved])
+  @@index([type, severity])
+}
+
+// User model for authentication and audit
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  role         String   @default("viewer") // "admin" | "coordinator" | "faculty" | "viewer"
+  departmentId String? // for department-specific access
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([role, departmentId])
+}
+
+// Audit log for tracking changes
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  action     String // "create" | "update" | "delete" | "export" | "rollback" | "generate"
+  entityType String // "teacher" | "subject" | "timetable" | etc.
+  entityId   String?
+  changes    String? // JSON: before/after
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([entityType, entityId])
+  @@index([action, createdAt])
+}

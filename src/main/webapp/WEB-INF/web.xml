@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+<servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>com.nt.main.Test</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>adminregistration</servlet-name>
+        <servlet-class>com.nt.main.AdminRegistration</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>adminregistrationsort</servlet-name>
+        <servlet-class>com.nt.main.AdminRegistrationSort</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>userregistration</servlet-name>
+        <servlet-class>com.nt.main.UserRegistration</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>userpage</servlet-name>
+        <servlet-class>com.nt.main.UserPage</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>complant</servlet-name>
+        <servlet-class>com.nt.main.UserComplaint</servlet-class>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>leave</servlet-name>
+        <servlet-class>com.nt.main.UserLeaveApplication</servlet-class>
+        <load-on-startup>7</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>request</servlet-name>
+        <servlet-class>com.nt.main.AdminRequest</servlet-class>
+        <load-on-startup>8</load-on-startup>
+    </servlet>
+
+</web-app>

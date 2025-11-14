@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="hostel.jpeg" style="background-color: white;">
+  <title>SGGS Hostel Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="student_accepted_request.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+</head>
+<body>
+    <table class="leave-app-table">
+    <thead>
+        <tr>
+            <th>Sr No</th>
+            <th>Reg No</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Branch</th>
+            <th>Purpose</th>
+            <th>Duration</th>
+            <th>Check In Date</th>
+            <th>Check Out Date</th>
+            <th >
+                <div class="download">
+                    <a href="#"><i class="fas fa-download fa-2x" title="Download the Table"></i></a>
+              </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>123456</td>
+            <td>John Doe</td>
+            <td>3rd Year</td>
+            <td>Computer Science</td>
+            <td>Meeting</td>
+            <td>2 hours</td>
+            <td>2023-11-01</td>
+            <td>2023-11-02</td>
+            <td class="leave-app-actions">
+                <button class="accept-button" onclick="acceptRequest(1)">Accept</button>
+                <button class="reject-button" onclick="rejectRequest(1)">Reject</button>
+                
+            </td>
+        </tr>
+        <!-- Add more rows as needed -->
+        <tr>
+            <td>2</td>
+            <td>789012</td>
+            <td>Jane Smith</td>
+            <td>2nd Year</td>
+            <td>Electrical Engineering</td>
+            <td>Vacation</td>
+            <td>3 days</td>
+            <td>2023-11-03</td>
+            <td>2023-11-06</td>
+            <td class="leave-app-actions">
+                <button class="accept-button" onclick="acceptRequest(2)">Accept</button>
+                <button class="reject-button" onclick="rejectRequest(2)">Reject</button>
+                <button class="view-button" onclick="viewDetails(2)">View</button>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>456789</td>
+            <td>Alice Johnson</td>
+            <td>4th Year</td>
+            <td>Mechanical Engineering</td>
+            <td>Conference</td>
+            <td>1 day</td>
+            <td>2023-11-07</td>
+            <td>2023-11-07</td>
+            <td class="leave-app-actions">
+                <button class="accept-button" onclick="acceptRequest(3)">Accept</button>
+                <button class ="reject-button" onclick="rejectRequest(3)">Reject</button>
+                <button class="view-button" onclick="viewDetails(3)">View</button>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>987654</td>
+            <td>Mary Johnson</td>
+            <td>1st Year</td>
+            <td>Chemistry</td>
+            <td>Lecture</td>
+            <td>2 hours</td>
+            <td>2023-11-10</td>
+            <td>2023-11-10</td>
+            <td class="leave-app-actions">
+                <button class="accept-button" onclick="acceptRequest(4)">Accept</button>
+                <button class="reject-button" onclick="rejectRequest(4)">Reject</button>
+                <button class="view-button" onclick="viewDetails(4)">View</button>
+            </td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>555555</td>
+            <td>Bob Johnson</td>
+            <td>2nd Year</td>
+            <td>Physics</td>
+            <td>Research</td>
+            <td>4 days</td>
+            <td>2023-11-15</td>
+            <td>2023-11-19</td>
+            <td class="leave-app-actions">
+                <button class="accept-button" onclick="acceptRequest(5)">Accept</button>
+                <button class="reject-button" onclick="rejectRequest(5)">Reject</button>
+                <button class="view-button" onclick="viewDetails(5)">View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

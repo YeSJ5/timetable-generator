@@ -1,0 +1,490 @@
+{
+  "info": {
+    "name": "AI Timetable Generator API",
+    "description": "Complete API collection for timetable generation, regeneration, versioning, and debugging",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{baseUrl}}/health"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "body": "{\n  \"status\": \"ok\",\n  \"uptime\": {\n    \"seconds\": 12345,\n    \"formatted\": \"3h 25m 45s\"\n  },\n  \"environment\": \"development\",\n  \"memory\": {\n    \"heapUsed\": \"45MB\",\n    \"heapTotal\": \"60MB\",\n    \"rss\": \"120MB\"\n  },\n  \"lastProfilerSample\": null,\n  \"timestamp\": \"2024-01-01T12:00:00.000Z\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Timetable Management",
+      "item": [
+        {
+          "name": "Generate Timetable",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sections\": [\"section-id-1\", \"section-id-2\"],\n  \"slots\": null,\n  \"candidateCount\": 10,\n  \"seed\": 12345,\n  \"includeExtraSlots\": true,\n  \"useAI\": false,\n  \"generationMode\": \"adaptive\",\n  \"priorities\": {\n    \"teacherPriority\": 0.8,\n    \"roomUtilization\": 0.6,\n    \"studentWorkloadBalance\": 0.7\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/timetable/generate",
+              "host": ["{{baseUrl}}"],
+              "path": ["timetable", "generate"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"timetables\": {\n    \"section-id-1\": { /* TimetableData */ },\n    \"section-id-2\": { /* TimetableData */ }\n  },\n  \"score\": 85,\n  \"conflicts\": [],\n  \"solverMetadata\": {\n    \"solver\": \"greedy\",\n    \"generationTime\": 1234,\n    \"placements\": 45\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Current Timetable",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/timetable/:sectionId",
+              "host": ["{{baseUrl}}"],
+              "path": ["timetable", ":sectionId"],
+              "variable": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Timetable Snapshot",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/timetable/:sectionId/snapshot",
+              "host": ["{{baseUrl}}"],
+              "path": ["timetable", ":sectionId", "snapshot"],
+              "variable": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"sectionId\": \"section-id-1\",\n  \"version\": 5,\n  \"score\": 85,\n  \"healthScore\": 90,\n  \"timetable\": { /* TimetableData */ },\n  \"metadata\": {\n    \"slotCount\": 45,\n    \"daysWithClasses\": 5,\n    \"lastUpdated\": \"2024-01-01T12:00:00.000Z\"\n  }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Version Management",
+      "item": [
+        {
+          "name": "List Versions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/timetable/:sectionId/versions",
+              "host": ["{{baseUrl}}"],
+              "path": ["timetable", ":sectionId", "versions"],
+              "variable": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"sectionId\": \"section-id-1\",\n  \"currentVersion\": 5,\n  \"versions\": [\n    {\n      \"version\": 1,\n      \"notes\": \"Initial generation\",\n      \"score\": 80,\n      \"healthScore\": 85,\n      \"generatedAt\": \"2024-01-01T10:00:00.000Z\",\n      \"restorationMetadata\": null\n    },\n    {\n      \"version\": 2,\n      \"notes\": \"Teacher regeneration\",\n      \"score\": 82,\n      \"healthScore\": 87,\n      \"generatedAt\": \"2024-01-01T11:00:00.000Z\",\n      \"restorationMetadata\": null\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Version Metadata",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/timetable/:sectionId/versions/:versionId/metadata",
+              "host": ["{{baseUrl}}"],
+              "path": ["timetable", ":sectionId", "versions", ":versionId", "metadata"],
+              "variable": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1"
+                },
+                {
+                  "key": "versionId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"metadata\": {\n    \"version\": 1,\n    \"notes\": \"Initial generation\",\n    \"score\": 80,\n    \"healthScore\": 85,\n    \"generatedAt\": \"2024-01-01T10:00:00.000Z\",\n    \"restorationMetadata\": null,\n    \"timetableSize\": 5\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Compare Versions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/timetable/versions/:version1/compare/:version2?timetableId=:timetableId&topN=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["timetable", "versions", ":version1", "compare", ":version2"],
+              "query": [
+                {
+                  "key": "timetableId",
+                  "value": "timetable-id-1"
+                },
+                {
+                  "key": "topN",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "version1",
+                  "value": "1"
+                },
+                {
+                  "key": "version2",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"changes\": [\n    {\n      \"type\": \"modified\",\n      \"day\": \"Mon\",\n      \"slot\": 0,\n      \"oldValue\": { /* old cell */ },\n      \"newValue\": { /* new cell */ }\n    }\n  ],\n  \"summary\": {\n    \"added\": 0,\n    \"removed\": 0,\n    \"modified\": 5,\n    \"unchanged\": 40\n  },\n  \"topModified\": [ /* top N modified slots */ ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Restore Version",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Restored for testing\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/timetable/:sectionId/restore/:version",
+              "host": ["{{baseUrl}}"],
+              "path": ["timetable", ":sectionId", "restore", ":version"],
+              "variable": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1"
+                },
+                {
+                  "key": "version",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Version 1 restored successfully\",\n  \"timetable\": { /* restored timetable */ }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Regeneration",
+      "item": [
+        {
+          "name": "Regenerate Teacher",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timetableId\": \"timetable-id-1\",\n  \"sectionId\": \"section-id-1\",\n  \"targetId\": \"teacher-id-1\",\n  \"preserveUnchanged\": true,\n  \"solverType\": \"greedy\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/regenerate/teacher",
+              "host": ["{{baseUrl}}"],
+              "path": ["regenerate", "teacher"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"timetables\": {\n    \"section-id-1\": { /* TimetableData */ }\n  },\n  \"score\": 85,\n  \"conflicts\": [],\n  \"changedSlots\": [\n    {\n      \"type\": \"modified\",\n      \"day\": \"Mon\",\n      \"slot\": 0,\n      \"oldValue\": { /* old cell */ },\n      \"newValue\": { /* new cell */ }\n    }\n  ],\n  \"solverMetadata\": {\n    \"solver\": \"greedy\",\n    \"generationTime\": 500,\n    \"placements\": 5\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Regenerate Section",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timetableId\": \"timetable-id-1\",\n  \"sectionId\": \"section-id-1\",\n  \"targetId\": \"section-id-1\",\n  \"preserveUnchanged\": true,\n  \"solverType\": \"greedy\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/regenerate/section",
+              "host": ["{{baseUrl}}"],
+              "path": ["regenerate", "section"]
+            }
+          }
+        },
+        {
+          "name": "Regenerate Day",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timetableId\": \"timetable-id-1\",\n  \"sectionId\": \"section-id-1\",\n  \"targetId\": \"Mon\",\n  \"day\": \"Mon\",\n  \"preserveUnchanged\": true,\n  \"solverType\": \"greedy\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/regenerate/day",
+              "host": ["{{baseUrl}}"],
+              "path": ["regenerate", "day"]
+            }
+          }
+        },
+        {
+          "name": "Regenerate Slot",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timetableId\": \"timetable-id-1\",\n  \"sectionId\": \"section-id-1\",\n  \"targetId\": \"Mon:0\",\n  \"day\": \"Mon\",\n  \"slotIndex\": 0,\n  \"preserveUnchanged\": true,\n  \"solverType\": \"greedy\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/regenerate/slot",
+              "host": ["{{baseUrl}}"],
+              "path": ["regenerate", "slot"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Debug & Admin",
+      "item": [
+        {
+          "name": "Slot Search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/debug/slot-search?sectionId=:sectionId&teacherId=:teacherId&day=Mon",
+              "host": ["{{baseUrl}}"],
+              "path": ["debug", "slot-search"],
+              "query": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1",
+                  "description": "Required"
+                },
+                {
+                  "key": "teacherId",
+                  "value": "teacher-id-1",
+                  "description": "Optional"
+                },
+                {
+                  "key": "roomId",
+                  "value": "",
+                  "description": "Optional"
+                },
+                {
+                  "key": "subjectId",
+                  "value": "",
+                  "description": "Optional"
+                },
+                {
+                  "key": "day",
+                  "value": "Mon",
+                  "description": "Optional"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"query\": {\n    \"sectionId\": \"section-id-1\",\n    \"teacherId\": \"teacher-id-1\",\n    \"day\": \"Mon\"\n  },\n  \"matches\": [\n    {\n      \"day\": \"Mon\",\n      \"slot\": 0,\n      \"cell\": { /* TimetableCell */ }\n    }\n  ],\n  \"count\": 3\n}"
+            }
+          ]
+        },
+        {
+          "name": "Usage Map",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/debug/usage-map?sectionId=:sectionId",
+              "host": ["{{baseUrl}}"],
+              "path": ["debug", "usage-map"],
+              "query": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"sectionId\": \"section-id-1\",\n  \"teacherUsage\": {\n    \"teacher-id-1\": [\n      { \"day\": \"Mon\", \"slot\": 0 },\n      { \"day\": \"Tue\", \"slot\": 2 }\n    ]\n  },\n  \"roomUsage\": {\n    \"room-id-1\": [\n      { \"day\": \"Mon\", \"slot\": 0 }\n    ]\n  },\n  \"summary\": {\n    \"teachers\": 5,\n    \"rooms\": 3,\n    \"totalTeacherSlots\": 45,\n    \"totalRoomSlots\": 40\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Lab Debug",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/debug/labs?sectionId=:sectionId",
+              "host": ["{{baseUrl}}"],
+              "path": ["debug", "labs"],
+              "query": [
+                {
+                  "key": "sectionId",
+                  "value": "section-id-1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"sectionId\": \"section-id-1\",\n  \"labs\": [\n    {\n      \"lab\": {\n        \"id\": \"lab-id-1\",\n        \"name\": \"CS101 Lab\",\n        \"durationSlots\": 2,\n        \"teacher\": { /* Teacher */ },\n        \"room\": { /* Room */ }\n      },\n      \"placements\": [\n        {\n          \"day\": \"Tue\",\n          \"startSlot\": 0,\n          \"duration\": 2\n        }\n      ]\n    }\n  ],\n  \"summary\": {\n    \"totalLabs\": 5,\n    \"placedLabs\": 4,\n    \"unplacedLabs\": 1\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Performance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/debug/performance",
+              "host": ["{{baseUrl}}"],
+              "path": ["debug", "performance"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"performance\": {\n    \"note\": \"Performance metrics are logged during regeneration. Check console logs or use /health endpoint for last profiler sample.\",\n    \"healthEndpoint\": \"/health\"\n  }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
+

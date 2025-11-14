@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="hostel.jpeg" style="background-color: white;">
+  <title>SGGS Hostel Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="request.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="top">
+
+  <div class="header">
+    <img src="collage_logo.png" alt="logo" />
+    <h1>SHRI GURU GOBIND SINGHJI <br> INSTITUTE OF ENGINEERING AND TECHNOLOGY, <br> VISHNUPURI, NANDED : 431606  <br><span class="font_header">(An Autonomous Institute Owned by Government of Maharashtra)</span>
+     <br>
+    <br ></h1>
+  </div>
+</div>
+<div class="mains">
+  
+    <div class="left">
+        <h3>Admin Pannel</h3>
+        
+        <div class="line">
+          <i class="fa-solid fa-code-pull-request"></i>
+          <a class="side_h" style="display: inline; " href="request.html">Request </a>
+        </div>
+        
+        <div class="line">
+          <i class="fa-solid fa-address-card"></i>
+          <a class="side_h" style="display: inline;" href="registration.html">Registration</a>
+        </div>
+        <div class="line">
+          <i class="fa-solid fa-person"></i>
+          <a class="side_h" style="display: inline;" href="student.html">&nbsp;Students</a>
+        </div>
+        <div class="line">
+          <i class="fa-solid fa-gear"></i>
+          <a class="side_h" style="display: inline;" href="setting.html">Settings</a>
+        </div>
+        <div class="line">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <a class="side_h" style="display: inline;" href="#">Log Out</a>
+        </div>
+      <hr>
+      <a class="side_a" href="#"><br>Rules and regulations</a>
+      <br>
+      
+      <h3 class="auto_h">Auto Refresh</h3>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <label class="switch">
+          <input type="checkbox" unchecked>
+          <span class="slider round"></span>
+        </label>
+      </label>
+     
+  </div>
+    <div class="other">
+      <div class="app">
+        <div class="left_app">
+          <h2>Leave Application</h2>
+        </div>
+        <div class="right_app">
+          <h2>Complaints</h2>
+        </div>
+      </div>
+     
+      <div class="tables">
+      <div class="application">
+        <table>
+          <thead>
+              <tr>
+                  <th class="sr-no">Sr No</th>
+                  <th class="reg-no">Reg No</th>
+                  <th class="date">Depart Date</th>
+                  <th class="date">Arrival Date</th>
+                  <th class="reason">Reason</th>
+                  <th class="extra"></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>1</td>
+                  <td>2021BCS050</td>
+                  <td class="date">1 Apr 2023</td>
+                  <td class="date">07 May 2023</td>
+                  <td class="reason">
+                    HK
+                  </td>
+                  <td class="actions">
+                    <button class="accept-button">Accept</button>
+                    <button class="reject-button">Reject</button>
+                   
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>2021BCS050</td>
+                <td class="date">1 Apr 2023</td>
+                <td class="date">07 May 2023</td>
+                <td class="reason">
+                  HK
+                </td>
+                <td class="actions">
+                  <button class="accept-button">Accept</button>
+                  <button class="reject-button">Reject</button>
+                  <button class="details-button">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2021BCS050</td>
+              <td class="date">1 Apr 2023</td>
+              <td class="date">07 May 2023</td>
+              <td class="reason">
+                HK
+              </td>
+              <td class="actions">
+                <button class="accept-button">Accept</button>
+                <button class="reject-button">Reject</button>
+                <button class="details-button">Details</button>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2021BCS050</td>
+            <td class="date">1 Apr 2023</td>
+            <td class="date">07 May 2023</td>
+            <td class="reason">
+              HK
+            </td>
+            <td class="actions">
+              <button class="accept-button">Accept</button>
+              <button class="reject-button">Reject</button>
+              <button class="details-button">Details</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2021BCS050</td>
+          <td class="date">1 Apr 2023</td>
+          <td class="date">07 May 2023</td>
+          <td class="reason">
+            HK
+          </td>
+          <td class="actions">
+            <button class="accept-button">Accept</button>
+            <button class="reject-button">Reject</button>
+            <button class="details-button">Details</button>
+        </td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2021BCS050</td>
+        <td class="date">1 Apr 2023</td>
+        <td class="date">07 May 2023</td>
+        <td class="reason">
+          HK
+        </td>
+        <td class="actions">
+          <button class="accept-button">Accept</button>
+          <button class="reject-button">Reject</button>
+          <button class="details-button">Details</button>
+      </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2021BCS050</td>
+      <td class="date">1 Apr 2023</td>
+      <td class="date">07 May 2023</td>
+      <td class="reason">
+        HK
+      </td>
+      <td class="actions">
+        <button class="accept-button">Accept</button>
+        <button class="reject-button">Reject</button>
+        <button class="details-button">Details</button>
+    </td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2021BCS050</td>
+    <td class="date">1 Apr 2023</td>
+    <td class="date">07 May 2023</td>
+    <td class="reason">
+      HK
+    </td>
+    <td class="actions">
+      <button class="accept-button">Accept</button>
+      <button class="reject-button">Reject</button>
+      <button class="details-button">Details</button>
+  </td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>2021BCS050</td>
+  <td class="date">1 Apr 2023</td>
+  <td class="date">07 May 2023</td>
+  <td class="reason">
+    HK
+  </td>
+  <td class="actions">
+    <button class="accept-button">Accept</button>
+    <button class="reject-button">Reject</button>
+    <button class="details-button">Details</button>
+</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>2021BCS050</td>
+  <td class="date">1 Apr 2023</td>
+  <td class="date">07 May 2023</td>
+  <td class="reason">
+    HK
+  </td>
+  <td class="actions">
+    <button class="accept-button">Accept</button>
+    <button class="reject-button">Reject</button>
+    <button class="details-button">Details</button>
+</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>2021BCS050</td>
+  <td class="date">1 Apr 2023</td>
+  <td class="date">07 May 2023</td>
+  <td class="reason">
+    HK
+  </td>
+  <td class="actions">
+    <button class="accept-button">Accept</button>
+    <button class="reject-button">Reject</button>
+    <button class="details-button">Details</button>
+</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>2021BCS050</td>
+  <td class="date">1 Apr 2023</td>
+  <td class="date">07 May 2023</td>
+  <td class="reason">
+    HK
+  </td>
+  <td class="actions">
+    <button class="accept-button">Accept</button>
+    <button class="reject-button">Reject</button>
+    <button class="details-button">Details</button>
+</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>2021BCS050</td>
+  <td class="date">1 Apr 2023</td>
+  <td class="date">07 May 2023</td>
+  <td class="reason">
+    HK
+  </td>
+  <td class="actions">
+    <button class="accept-button">Accept</button>
+    <button class="reject-button">Reject</button>
+    <button class="details-button">Details</button>
+</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>2021BCS050</td>
+  <td class="date">1 Apr 2023</td>
+  <td class="date">07 May 2023</td>
+  <td class="reason">
+    HK
+  </td>
+  <td class="actions">
+    <button class="accept-button">Accept</button>
+    <button class="reject-button">Reject</button>
+    <button class="details-button">Details</button>
+</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>2021BCS050</td>
+  <td class="date">1 Apr 2023</td>
+  <td class="date">07 May 2023</td>
+  <td class="reason">
+    HK
+  </td>
+  <td class="actions">
+    <button class="accept-button">Accept</button>
+    <button class="reject-button">Reject</button>
+    <button class="details-button">Details</button>
+</td>
+</tr>
+              <!-- Add more rows as needed -->
+          </tbody>
+      </table>
+  </body>
+      </div>
+
+      <div class="complaint">
+        <table class="data-table">
+          <thead>
+              <tr>
+                  <th class="sr-no">Sr No</th>
+                  <th class="room-no">Room No</th>
+                  <th class="subject">Subject</th>
+                  <th class="description">Description</th>
+                  <th class="date">Asign Date</th>
+                  <th class="status">Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>1</td>
+                  <td>SHGB-07</td>
+                  <td class="subject">Maintenance Request</td>
+                  <td class="description">Broken window</td>
+                  <td class="assign-date">2023-10-15</td>
+                
+                  <td class="status" style="color: green;">Resolved</td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>102</td>
+                  <td class="subject">HVAC Issue</td>
+                  <td class="description">Air conditioning not working</td>
+                  <td class="assign-date">2023-10-16</td>
+                  <td class="status">In Progress</td>
+              </tr>
+              <td>3</td>
+                <td>103</td>
+                <td class="subject">Electrical Fault</td>
+                <td class="description">Power outage</td>
+                <td class="assign-date">2023-10-18</td>
+                <td class="status">Resolved</td>
+            </tr>
+            <!-- Add 17 more rows with relatable values -->
+            <tr>
+                <td>4</td>
+                <td>104</td>
+                <td class="subject">Plumbing Issue</td>
+                <td class="description">Leaking pipe</td>
+                <td class="assign-date">2023-10-20</td>
+                <td class="status">In Progress</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>101</td>
+              <td class="subject">Maintenance Request</td>
+              <td class="description">Broken window</td>
+              <td class="assign-date">2023-10-15</td>
+            
+              <td class="status">Resolved</td>
+          </tr>
+          <tr>
+              <td>2</td>
+              <td>102</td>
+              <td class="subject">HVAC Issue</td>
+              <td class="description">Air conditioning not working</td>
+              <td class="assign-date">2023-10-16</td>
+              <td class="status">In Progress</td>
+          </tr>
+          <td>3</td>
+            <td>103</td>
+            <td class="subject">Electrical Fault</td>
+            <td class="description">Power outage</td>
+            <td class="assign-date">2023-10-18</td>
+            <td class="status">Resolved</td>
+        </tr>
+        <!-- Add 17 more rows with relatable values -->
+        <tr>
+            <td>4</td>
+            <td>104</td>
+            <td class="subject">Plumbing Issue</td>
+            <td class="description">Leaking pipe</td>
+            <td class="assign-date">2023-10-20</td>
+            <td class="status">In Progress</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>101</td>
+          <td class="subject">Maintenance Request</td>
+          <td class="description">Broken window</td>
+          <td class="assign-date">2023-10-15</td>
+        
+          <td class="status">Resolved</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>102</td>
+          <td class="subject">HVAC Issue</td>
+          <td class="description">Air conditioning not working</td>
+          <td class="assign-date">2023-10-16</td>
+          <td class="status">In Progress</td>
+      </tr>
+      <td>3</td>
+        <td>103</td>
+        <td class="subject">Electrical Fault</td>
+        <td class="description">Power outage</td>
+        <td class="assign-date">2023-10-18</td>
+        <td class="status">Resolved</td>
+    </tr>
+    <!-- Add 17 more rows with relatable values -->
+    <tr>
+        <td>4</td>
+        <td>104</td>
+        <td class="subject">Plumbing Issue</td>
+        <td class="description">Leaking pipe</td>
+        <td class="assign-date">2023-10-20</td>
+        <td class="status">In Progress</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>101</td>
+      <td class="subject">Maintenance Request</td>
+      <td class="description">Broken window</td>
+      <td class="assign-date">2023-10-15</td>
+    
+      <td class="status">Resolved</td>
+  </tr>
+  <tr>
+      <td>2</td>
+      <td>102</td>
+      <td class="subject">HVAC Issue</td>
+      <td class="description">Air conditioning not working</td>
+      <td class="assign-date">2023-10-16</td>
+      <td class="status">In Progress</td>
+  </tr>
+  <td>3</td>
+    <td>103</td>
+    <td class="subject">Electrical Fault</td>
+    <td class="description">Power outage</td>
+    <td class="assign-date">2023-10-18</td>
+    <td class="status">Resolved</td>
+</tr>
+<!-- Add 17 more rows with relatable values -->
+<tr>
+    <td>4</td>
+    <td>104</td>
+    <td class="subject">Plumbing Issue</td>
+    <td class="description">Leaking pipe</td>
+    <td class="assign-date">2023-10-20</td>
+    <td class="status">In Progress</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>101</td>
+  <td class="subject">Maintenance Request</td>
+  <td class="description">Broken window</td>
+  <td class="assign-date">2023-10-15</td>
+
+  <td class="status">Resolved</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>102</td>
+  <td class="subject">HVAC Issue</td>
+  <td class="description">Air conditioning not working</td>
+  <td class="assign-date">2023-10-16</td>
+  <td class="status">In Progress</td>
+</tr>
+<td>3</td>
+<td>103</td>
+<td class="subject">Electrical Fault</td>
+<td class="description">Power outage</td>
+<td class="assign-date">2023-10-18</td>
+<td class="status">Resolved</td>
+</tr>
+<!-- Add 17 more rows with relatable values -->
+<tr>
+<td>4</td>
+<td>104</td>
+<td class="subject">Plumbing Issue</td>
+<td class="description">Leaking pipe</td>
+<td class="assign-date">2023-10-20</td>
+<td class="status">In Progress</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>101</td>
+  <td class="subject">Maintenance Request</td>
+  <td class="description">Broken window</td>
+  <td class="assign-date">2023-10-15</td>
+
+  <td class="status">Resolved</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>102</td>
+  <td class="subject">HVAC Issue</td>
+  <td class="description">Air conditioning not working</td>
+  <td class="assign-date">2023-10-16</td>
+  <td class="status">In Progress</td>
+</tr>
+<td>3</td>
+<td>103</td>
+<td class="subject">Electrical Fault</td>
+<td class="description">Power outage</td>
+<td class="assign-date">2023-10-18</td>
+<td class="status">Resolved</td>
+</tr>
+<!-- Add 17 more rows with relatable values -->
+<tr>
+<td>4</td>
+<td>104</td>
+<td class="subject">Plumbing Issue</td>
+<td class="description">Leaking pipe</td>
+<td class="assign-date">2023-10-20</td>
+<td class="status">In Progress</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>101</td>
+  <td class="subject">Maintenance Request</td>
+  <td class="description">Broken window</td>
+  <td class="assign-date">2023-10-15</td>
+
+  <td class="status">Resolved</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>102</td>
+  <td class="subject">HVAC Issue</td>
+  <td class="description">Air conditioning not working</td>
+  <td class="assign-date">2023-10-16</td>
+  <td class="status">In Progress</td>
+</tr>
+<td>3</td>
+<td>103</td>
+<td class="subject">Electrical Fault</td>
+<td class="description">Power outage</td>
+<td class="assign-date">2023-10-18</td>
+<td class="status">Resolved</td>
+</tr>
+<!-- Add 17 more rows with relatable values -->
+<tr>
+<td>4</td>
+<td>104</td>
+<td class="subject">Plumbing Issue</td>
+<td class="description">Leaking pipe</td>
+<td class="assign-date">2023-10-20</td>
+<td class="status">In Progress</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>101</td>
+  <td class="subject">Maintenance Request</td>
+  <td class="description">Broken window</td>
+  <td class="assign-date">2023-10-15</td>
+
+  <td class="status">Resolved</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>102</td>
+  <td class="subject">HVAC Issue</td>
+  <td class="description">Air conditioning not working</td>
+  <td class="assign-date">2023-10-16</td>
+  <td class="status">In Progress</td>
+</tr>
+<td>3</td>
+<td>103</td>
+<td class="subject">Electrical Fault</td>
+<td class="description">Power outage</td>
+<td class="assign-date">2023-10-18</td>
+<td class="status">Resolved</td>
+</tr>
+<!-- Add 17 more rows with relatable values -->
+<tr>
+<td>4</td>
+<td>104</td>
+<td class="subject">Plumbing Issue</td>
+<td class="description">Leaking pipe</td>
+<td class="assign-date">2023-10-20</td>
+<td class="status">In Progress</td>
+</tr>
+              <!-- Add more rows as needed -->
+          </tbody>
+      </table>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<!-- partial -->
+  
+</body>
+</html>

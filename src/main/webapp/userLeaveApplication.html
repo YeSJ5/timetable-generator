@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Application Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f4f4f4; /* Set your desired background color */
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #ffffff; /* Form container background color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <h2 class="text-center mb-4">Leave Application Form</h2>
+                    <form action="/HostelManagementSystem/userleaveapplication" method="post">
+                        <div class="form-group">
+                            <label for="regno">Registration Number:</label>
+                            <input type="text" class="form-control" id="regno" name="regno" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="departure_date">Departure Date:</label>
+                            <input type="date" class="form-control" id="departure_date" name="departure_date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="arrival_date">Arrival Date:</label>
+                            <input type="date" class="form-control" id="arrival_date" name="arrival_date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reason">Reason for Leave:</label>
+                            <textarea class="form-control" id="reason" name="reason" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

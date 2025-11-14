@@ -1,0 +1,415 @@
+openapi: 3.0.3
+info:
+  title: AI Timetable Generator API
+  version: 1.0.0
+  description: |
+    Enterprise-grade API for generating and managing academic timetables.
+    
+    Features:
+    - AI-powered timetable generation
+    - Partial regeneration (teacher, section, day, slot)
+    - Version control and comparison
+    - Debug and admin utilities
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+  - url: https://api.example.com
+    description: Production server
+
+tags:
+  - name: Timetable
+    description: Timetable generation and management
+  - name: Regeneration
+    description: Partial timetable regeneration endpoints
+  - name: Versions
+    description: Version control and comparison
+  - name: Debug
+    description: Debugging and admin utilities
+  - name: System
+    description: System health and metadata
+
+paths:
+  /regenerate/teacher:
+    post:
+      summary: Regenerate timetable for a specific teacher
+      description: Partially regenerates timetable for a teacher with minimal disturbance
+      tags:
+        - Regeneration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeacherRegenerationRequest'
+      responses:
+        '200':
+          description: Regeneration successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegenerationResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /regenerate/section:
+    post:
+      summary: Regenerate entire section timetable
+      description: Regenerates all slots for a section
+      tags:
+        - Regeneration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SectionRegenerationRequest'
+      responses:
+        '200':
+          description: Regeneration successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegenerationResponse'
+        '400':
+          description: Validation error
+        '429':
+          description: Rate limit exceeded
+
+  /regenerate/day:
+    post:
+      summary: Regenerate timetable for a specific day
+      description: Regenerates all slots for a specific day
+      tags:
+        - Regeneration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DayRegenerationRequest'
+      responses:
+        '200':
+          description: Regeneration successful
+        '400':
+          description: Validation error
+        '429':
+          description: Rate limit exceeded
+
+  /regenerate/slot:
+    post:
+      summary: Regenerate a specific slot
+      description: Regenerates a single slot or lab block
+      tags:
+        - Regeneration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlotRegenerationRequest'
+      responses:
+        '200':
+          description: Regeneration successful
+        '400':
+          description: Validation error
+        '429':
+          description: Rate limit exceeded
+
+  /timetable/versions/{version1}/compare/{version2}:
+    get:
+      summary: Compare two timetable versions
+      description: Returns detailed diff between two versions
+      tags:
+        - Versions
+      parameters:
+        - name: version1
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+        - name: version2
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+        - name: timetableId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: topN
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 10
+      responses:
+        '200':
+          description: Comparison successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionComparisonResponse'
+        '400':
+          description: Validation error
+        '404':
+          description: Timetable or version not found
+
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns system health and performance metrics
+      tags:
+        - System
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+components:
+  schemas:
+    TeacherRegenerationRequest:
+      type: object
+      required:
+        - timetableId
+        - sectionId
+        - targetId
+      properties:
+        timetableId:
+          type: string
+          format: uuid
+        sectionId:
+          type: string
+          format: uuid
+        targetId:
+          type: string
+          format: uuid
+          description: Teacher ID
+        preserveUnchanged:
+          type: boolean
+          default: true
+        solverType:
+          type: string
+          enum: [greedy, hill-climbing, simulated-annealing, genetic]
+          default: greedy
+
+    SectionRegenerationRequest:
+      type: object
+      required:
+        - timetableId
+        - sectionId
+        - targetId
+      properties:
+        timetableId:
+          type: string
+          format: uuid
+        sectionId:
+          type: string
+          format: uuid
+        targetId:
+          type: string
+          format: uuid
+          description: Section ID
+        preserveUnchanged:
+          type: boolean
+          default: true
+        solverType:
+          type: string
+          enum: [greedy, hill-climbing, simulated-annealing, genetic]
+          default: greedy
+
+    DayRegenerationRequest:
+      type: object
+      required:
+        - timetableId
+        - sectionId
+        - targetId
+        - day
+      properties:
+        timetableId:
+          type: string
+          format: uuid
+        sectionId:
+          type: string
+          format: uuid
+        targetId:
+          type: string
+          enum: [Mon, Tue, Wed, Thu, Fri]
+          description: Day name
+        day:
+          type: string
+          enum: [Mon, Tue, Wed, Thu, Fri]
+        preserveUnchanged:
+          type: boolean
+          default: true
+        solverType:
+          type: string
+          enum: [greedy, hill-climbing, simulated-annealing, genetic]
+          default: greedy
+
+    SlotRegenerationRequest:
+      type: object
+      required:
+        - timetableId
+        - sectionId
+        - targetId
+        - day
+        - slotIndex
+      properties:
+        timetableId:
+          type: string
+          format: uuid
+        sectionId:
+          type: string
+          format: uuid
+        targetId:
+          type: string
+          pattern: '^(Mon|Tue|Wed|Thu|Fri):\\d+$'
+          description: Format "Day:slotIndex"
+        day:
+          type: string
+          enum: [Mon, Tue, Wed, Thu, Fri]
+        slotIndex:
+          type: integer
+          minimum: 0
+        preserveUnchanged:
+          type: boolean
+          default: true
+        solverType:
+          type: string
+          enum: [greedy, hill-climbing, simulated-annealing, genetic]
+          default: greedy
+
+    RegenerationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        timetables:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Timetable'
+        score:
+          type: number
+        conflicts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conflict'
+        changedSlots:
+          type: array
+        solverMetadata:
+          type: object
+
+    VersionComparisonResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        version1:
+          type: integer
+        version2:
+          type: integer
+        timetableId:
+          type: string
+        changes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SlotDiff'
+        summary:
+          type: object
+        topModified:
+          type: array
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        uptime:
+          type: object
+        environment:
+          type: string
+        memory:
+          type: object
+        lastProfilerSample:
+          type: object
+          nullable: true
+        timestamp:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum: [VALIDATION_ERROR, NOT_FOUND, CONFLICT, RATE_LIMIT_EXCEEDED, SERVER_ERROR]
+            message:
+              type: string
+            details:
+              type: object
+
+    Timetable:
+      type: object
+      description: Timetable data structure
+
+    Conflict:
+      type: object
+      properties:
+        type:
+          type: string
+        day:
+          type: string
+        slot:
+          type: string
+        message:
+          type: string
+
+    SlotDiff:
+      type: object
+      properties:
+        day:
+          type: string
+        slot:
+          type: integer
+        type:
+          type: string
+          enum: [added, removed, modified, unchanged]
+        oldValue:
+          type: object
+          nullable: true
+        newValue:
+          type: object
+          nullable: true
+

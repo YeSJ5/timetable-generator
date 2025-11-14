@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="hostel.jpeg" style="background-color: white;">
+  <title>SGGS Hostel Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="student.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="top">
+
+  <div class="header">
+    <img src="collage_logo.png" alt="logo" />
+    <h1>SHRI GURU GOBIND SINGHJI <br> INSTITUTE OF ENGINEERING AND TECHNOLOGY, <br> VISHNUPURI, NANDED : 431606  <br><span class="font_header">(An Autonomous Institute Owned by Government of Maharashtra)</span>
+     <br>
+    <br ></h1>
+  </div>
+</div>
+<div class="mains">
+  
+    <div class="left">
+        <h3>Admin Pannel</h3>
+       
+          <div class="line">
+            <i class="fa-solid fa-code-pull-request"></i>
+            <a class="side_h" style="display: inline; " href="request.html">Request </a>
+          </div>
+         
+          <div class="line">
+            <i class="fa-solid fa-address-card"></i>
+            <a class="side_h" style="display: inline;" href="registration.html">Registration</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-person"></i>
+            <a class="side_h" style="display: inline;" href="student.html">&nbsp;Students</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-gear"></i>
+            <a class="side_h" style="display: inline;" href="setting.html">Settings</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a class="side_h" style="display: inline;" href="#">Log Out</a>
+          </div>
+        <hr>
+        <a class="side_a" href="#"><br>Rules and regulations</a>
+        <br>
+        
+        <h3 class="auto_h">Auto Refresh</h3>
+        <label class="switch">
+          <input type="checkbox" checked>
+          <label class="switch">
+            <input type="checkbox" unchecked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+       
+    </div>
+    <div class="other">
+        <div class="select">
+        <div class="year">
+            <label for="yearSelect">Select Year:</label>
+            <select id="yearSelect" onchange="filterStudents()">
+                <option value="all">All Year</option> <!-- Added "All" option -->
+                <option value="1">FY</option>
+                <option value="2">SY</option>
+                <option value="3">TY</option>
+                <option value="4">BTech</option>
+            </select>
+        </div>
+        <div class="branch">
+            <label for="branchSelect">Select Branch:</label>
+            <select id="branchSelect" onchange="filterStudents()">
+                <option value="all">All Branches</option>
+                <option value="chemical">Chemical</option>
+                <option value="civil">Civil</option>
+                <option value="computer">Computer Science</option>
+                <option value="electrical">Electrical</option>
+                <option value="extc">Electronics and Telecommunication</option>
+                <option value="instru">Instrumentation</option>
+                <option value="it">Information Technology</option>
+                <option value="mechanical">Mechanical</option>
+                <option value="production">Production</option>
+                <option value="textile">Textile</option>
+                
+                
+                <!-- Add more branch options as needed -->
+            </select>
+        </div>
+        <div class="room">
+            <label for="roomInput">Room Number:</label>
+            <input type="text" id="roomInput" placeholder="SHGB06">
+            <button id="roomButton">Search</button>
+        </div>
+        <div class="download">
+            <a href="#"><i class="fa-sharp fa-solid fa-circle-down  fa-2xl" ></i></a>
+            
+        </div>
+    </div>
+        <div class="student_table">
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th class="sr-no">sr no</th>
+                        <th class="name">Name</th>
+                        <th class="reg-no">Reg no</th>
+                        <th class="s_year">Year</th>
+                        <th class="s_branch">Branch</th>
+                        <th class="mob-no">Mob No</th>
+                        <th class="room-no">Room no</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample student data, you can replace this with your data -->
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Computer Science</td>
+                        <td>1234368358</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Someshwar Kashinath Devake Lorem, ipsum dolor.</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Computer Science</td>
+                        <td>1234368358</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>FY</td>
+                        <td>Computer Science</td>
+                        <td>1234368358</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Mechanical</td>
+                        <td>1234368358</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Civil</td>
+                        <td>1234368358</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Civil</td>
+                        <td>1234368358</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Someshwar Kashinath Devake Lorem, ipsum dolor.</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>FY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Mechanical</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Someshwar Kashinath Devake Lorem, ipsum dolor.</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>FY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Mechanical</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Someshwar Kashinath Devake Lorem, ipsum dolor.</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>FY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Mechanical</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Someshwar Kashinath Devake Lorem, ipsum dolor.</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>FY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Mechanical</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Someshwar Kashinath Devake Lorem, ipsum dolor.</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>FY</td>
+                        <td>Computer Science</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Mechanical</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>SY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>John Doe</td>
+                        <td>2021BCS078</td>
+                        <td>TY</td>
+                        <td>Civil</td>
+                        <td>SHGC07</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>  
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="stdlogin.css">
+  <title>Student Login</title>
+</head>
+<body>
+  <div class="top">
+ <div class="image">
+  <img src="sggs.png" alt="">
+ </div>
+ <div class="name">
+  <h2>SHRI GURU GOBIND SINGHJI <br> INSTITUTE OF ENGINEERING AND TECHNOLOGY, <br> VISHNUPURI, NANDED : 431606  <br><span class="font_header">(An Autonomous Institute Owned by Government of Maharashtra)</span>
+    </h2>
+ </div>
+
+  </div>
+  <div class="ps-popup" id="pop1">
+    <span class="close" onclick="popupClose()"> <i class="fa fa-close"></i> </span>
+    <form>
+      <label for="lname"> Name</label>
+      <input type="text" id="lname"/>   
+      <label for="regnum"> Registration Number</label>
+      <input type="number" id="regnum"/>  
+      <label for="branch"> Branch</label>
+      <input type="text" id="branch"/>  
+      <label for="year"> Year</label>
+      <input type="text" id="year"/>  
+ 
+      <label for="lname"> Hostel</label>
+      <input type="text" id="lname"/>  
+      <label for="lname"> Mess</label>
+      <input type="text" id="lname"/>  
+      <input type="submit" value="Submit"/>
+    </form>
+   </div>
+  
+<div class="sideBar">
+ <div>
+  <h1>Student Panel</h1>
+ </div>
+ <div class="line">
+
+    <i class="fa fa-address-book-o" ></i>
+
+    <a class="side_h" style="display: inline; font-size: 1.2rem;">Registration</a>
+
+ </div>
+ <div class="line">
+  <i class="fa fa-window-restore" ></i>
+  <a class="side_h" style="display: inline; font-size: 1.2rem;" href="#">Complaint</a>
+</div>
+<div class="line">
+  <i class="fa fa-sticky-note"></i>
+  <a class="side_h" style="display: inline; font-size: 1.2rem;" href="#">Rules & Reg.</a>
+</div>
+<div class="line" >
+  <i class="fa fa-pencil-square" onclick="popUp(1)"></i>
+  <a class="side_h" style="display: inline; font-size: 1.2rem;" onclick="popUp(1)"href="#" >Leave Application</a>
+</div>
+<div class="line">
+  <i class="fa fa-user-secret"></i>
+  <a class="side_h" style="display: inline; font-size: 1.2rem;" href="#">Feedback</a>
+</div>
+
+ 
+</div>
+<div class="boxes">
+  <div class="stdInfo">
+    <div class="head">
+      <p onclick="popUp(1)">Latest News</p>
+    </div>
+    <div class="content">
+      <p> The Hostel admission for third year and final year boys in AY 2023-24 <br>  Admission Form :
+       </p>
+       <hr style="
+       margin: 1rem 0rem;
+       opacity:50%;">
+      <p> Girls and Boys Hostel Admission Form For SY 2023-24:  </p>
+      <hr style="
+      margin: 1rem 0rem;
+      opacity:50%;">
+      <p> The Hostel admission for third year and final year boys in AY 2023-24 </p> 
+      <hr style="
+      margin: 1rem 0rem;
+      opacity:50%;">
+      <p> The Hostel admission for third year and final year boys in AY 2023-24 </p> <br>
+
+    </div>
+  </div>
+  <div class="stdInfo2">
+    <div class="head"> <p>Hostel Notices</p>
+    
+    </div>
+    <div class="content">
+      <p> The Hostel admission for third year and final year boys in AY 2023-24 <br>  Admission Form : <a href="#"> Click here</a>
+         <span class="new"> NEW! </span></p> 
+         <hr style="
+       margin: 1rem 0rem;
+       opacity:50%;">
+      <p> Girls and Boys Hostel Admission Form For SY 2023-24: <a href="#"> Click here</a> <span class="new"> NEW! </span></p> 
+      <hr style="
+       margin: 1rem 0rem;
+       opacity:50%;">
+      <p> The Hostel admission for third year and final year boys in AY 2023-24 <span class="new"> NEW! </span></p> 
+      <hr style="
+       margin: 1rem 0rem;
+       opacity:50%;">
+      <p> The Hostel admission for third year and final year boys in AY 2023-24 <span class="new"> NEW! </span></p> <br>
+
+    </div>
+  </div>
+  <!-- <div class="stdInf4">
+    <div class="head"></div>
+  </div> -->
+
+  <div class="stdInfo3">
+    <div class="head">
+      <div class="formheadind">
+        Student Info
+      </div>
+      <form>
+        <label for="lname"> <b>Name</b></label>
+        <input type="text" id="lname"/>  
+        <label for="lname"> <b>Registration Number</b></label> 
+        <input type="" id="regnum"/>
+        <label for="lname"> <b>Branch</b></label>  
+        <input type="text" id="branch"/> 
+        <label for="lname"> <b>Year</b></label> 
+        <input type="text" id="year"/>  
+
+        <label><b>Hostel</b></label>
+        <div class="fees">
+          Paid Fees
+        <input type="text" name="" class="fee">
+        Remaining Fees
+        <input type="text" name="" class="fee">
+        </div>
+
+        <label><b>Mess</b></label>
+        <div class="fees">
+          Paid Fees
+        <input type="text" name="" class="fee">
+        Remaining Fees
+        <input type="text" name="" class="fee">
+        </div>
+  
+        <!-- <label for="lname"><b>
+          Hostel
+        </b> </label>
+        <br>
+        <div>
+
+        </div>
+        Paid Fees
+        <input type="text" name="" class="paid">
+        Remaining Fees
+        <input type="text" name="" class="paid">
+        <label for="lname">
+          <b>Mess</b> </label>
+        <br> 
+        Paid Fees
+        <input type="text" name="" class="paid">
+        Remaining Fees
+        <input type="text" name="" class="paid"> -->
+      
+        <!--<input type="submit" value="Submit"/> -->
+      </form>
+    </div>
+  </div>
+
+
+  <div class="letter">
+    <img src="MBKokare.png"></img>
+   <br><br>
+    <p>
+      <span class="title"> Director's Desk </span> <br><br><br>
+      Dear Students, <br><br>
+      Welcome & Greetings <br><br>
+      It is with great pleasure and enthusiasm that I extend a warm welcome to every one of you as you embark on your journey at Shri Guru Gobind Singhji Institute of Engineering and Technology (SGGSIE&T), Vishnupuri, Nanded. On behalf of the faculty, staff, and administration, I want to express our genuine excitement to have you join our vibrant SGGSIE&T community.
+<br><br>
+Engineering is a field that pushes the boundaries of human knowledge and innovation, and you have made an incredible decision by choosing to pursue this path. You have chosen a discipline that is at the forefront of solving complex problems, improving lives, and shaping the future. We applaud your passion, dedication, and commitment to making a difference in the world through the power of engineering.
+<br><br>
+At our SGGSIE&T, we strive to provide an exceptional  More...
+<br><br>
+Dr. M.B.KokareDirector
+    </p>
+  </div>
+
+  <div class="stdInfo5">
+    <div class="head"><p> Hostel Facilities</p></div>
+ <div class="content">
+<p>SGGS Hostel is a ‘home away from home’. SGGS Hostel life provides conducive atmosphere for the overall personality development of the students. All students are expected to maintain tranquil academic, atmosphere, helping each other to achieve distinction.
+</p>
+<br> 
+<br>
+<span class="title"> Hostel Committee </span> <br><br>
+
+<p>The hostel was started in 1982, after SGGS college was established in 1981 by Govt. of Maharashtra in a Govt. Polytechnic building. The Institute has two buildings for boys hostel to accommodate 600 students and three buildings for girls hostel to accommodate 618 girls. In addition to this, we also provide family accommodation to Ph.D. students admitted under quality Improvement Program (QIP). The hostel  buildings are named Sahyadri and Nandgiri for boys hostel, Devgiri, Godawari and Krishna for girls hostel. There are also QIP quarters. The hostel campus houses an office, security-locations, a guest house and Rector/Warden quarters.
+</p>
+<br><br>
+<span class="title"> Amenities </span> 
+<br><br>
+<p>
+The students are provided with basic amenities like cot, table, chair, cupboard and fan in their rooms. The rooms are spacious, airy and illuminated. Students common rooms/dining halls have TV sets. The 24 hours water supply is provided to all hostels. A generator is being added to ensure supply to messes and common rooms of girls hostel. The hostel campus maintenance like cleaning/sweeping, electrical repairs, and security services are outsourced. An electrician on campus for 24 hours is available. 
+<br><br>  A facility of doctor with a separate dispensary block within the hostel premises is available. Ambulance is also available with driver to take care of emergency travel required till Hospital.
+</p>
+<br><br>
+<span class="title">
+Fees Structure (For Boys’ & Girls’ hostel)
+</span>
+<br><br>
+<p>
+
+A) Hostel fees (per year) : Rs.22,000/- (from AY 2023-24) <br>
+
+B) Hostel Mess Deposit (for new admission) : Rs. 5000 (Refundable) <br>
+
+C) Hostel Mess (cooperative) Charges (per year) : Rs.24,000/- <br><br> Students admitted to hostels have to pay total fees as mentioned above at the time of admission only.  Additional charges if required will be collected at the end of year or at the time of No Dues. <br>
+<br>
+The Hostel Information Brochure and Application form for hostel admission are available on the link provided below. Before applying for hostel accommodation student must read the Hostel Information Brochure carefully.
+</p>
+</div></div>
+
+</div>
+<div class="footer">
+  <p class="footerpara">
+    Official Institute Portal <a href="https://sggs.ac.in/"> click here</a>
+    <br>
+    Office : <a href="#">+91-02462-269285 (Hostel Office)</a> 
+    <br>
+    Fax : <a href="#">+91-02462-229236</a> 
+    <br>
+    Email : <a href="mailto:hostel@sggs.ac.  in">hostel@sggs.ac.in</a>
+  </p>
+ </div>
+
+
+ <script>
+
+function popUp(id) {
+  let ele = document.getElementById(`pop${id}`);
+  ele.style.display = "block";
+  console.log(ele);
+}
+
+function popupClose() {
+  let p = document.getElementById("pop1");
+  p.style.display = "none";
+}
+ </script>
+
+</body>
+</html>

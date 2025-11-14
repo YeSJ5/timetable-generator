@@ -1,0 +1,376 @@
+
+body {
+    margin: 0;
+    overflow:visible;
+    position:auto;
+    padding-bottom: 0;
+    background-color:rgb(233, 233, 233);
+   
+    
+  }
+.top{  
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 8;
+    background:linear-gradient(230deg,
+    #60A3D9 40%,
+    #0c5191 60%);
+    border-bottom: solid rgb(0, 0, 0);
+    border-top:solid rgb(58, 53, 53);
+    box-shadow: 5px 5px 10px rgb(31, 29, 29);
+    margin: 0;
+    overflow: visible;
+}
+
+
+.mains{
+    position: relative;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    top: 100px;
+}
+
+.left {
+  z-index: 7;
+  background-color: hwb(195 58% 41%);
+  margin-left: 0px;
+  margin-right: 5px;
+  margin-top: 0px;
+  padding: 10px;
+  width: 300px;
+  position: fixed;
+  height: 100%;
+  box-shadow: 3px  2px  8px black;
+}
+.other{
+  position: relative;
+  left: 340px;
+  margin-top: 20px;
+  width: 1150px;
+}
+
+.side_h {
+  display: inline;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  
+}
+.line{
+  display: block;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+}
+.side_a{
+  top: 30px;
+  font-size: 19px;
+  text-decoration: underline;
+}
+
+.but{
+  text-decoration:none;
+  font-size: 20px;
+  width: 200px;
+  height: 25px;
+  margin: 25px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: #6CB4EE;
+  border: black solid 3px;
+  border-radius: 10px;
+}
+.but a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.but:hover{
+  background-color: rgb(0, 166, 255);
+}
+.header img {
+  float: left;
+  width: 80px;
+  height: 78px;
+  margin-left:10px;
+}
+.header h1 {
+  position: relative;
+  left: 10px;
+  font-size: 18px;
+  font-family: 'Roboto Slab', serif;
+}
+.font_header{
+  font-size: 15px;
+}
+  a {
+    color: black;
+  }
+  
+  .line:hover,
+  .line:focus {
+    background-color:rgb(20, 191, 214);
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    bottom: 29px;
+    left: 66px;
+    width: 45px;
+    height: 20px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(25px);
+    -ms-transform: translateX(25px);
+    transform: translateX(24px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+a{
+text-decoration: none;
+}
+a.side_a:hover{
+text-shadow: black 2px 5px 5px;
+}
+
+
+
+
+.refresh-label {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Style the select button */
+.refresh-select {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007BFF; /* Background color for the select button */
+    color: #fff; /* Text color */
+    border: 1px solid #007BFF; /* Border color */
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-select:hover {
+    border-color: #0056b3; /* Border color on hover */
+    background-color: #0056b3; /* Background color on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.refresh-select:focus {
+    border-color: #004080; /* Border color on focus */
+    background-color: #004080; /* Background color on focus */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.select-container {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+
+
+
+
+#content {
+  margin-left: 50px;
+  padding: 20px;
+}
+
+
+#directors-message {
+  
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#directors-message {
+  background-color:rgb(223, 223, 223);
+  font-size: 16px;
+  line-height: 25px;
+  margin-bottom: 100px;
+}
+
+#director-image {
+  max-width: 100rem;
+  height: fit-content;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.notificationbox{
+  border: #2196F3 2px solid;
+  background-color:rgb(228, 228, 228);
+  font-size: 18px;
+  line-height: 26px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  padding: 5px;
+  font-family: 'Lobster', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto Slab', serif;
+}
+.notificationbox a:hover{
+  text-decoration: underline;
+}
+#notifications{
+  width: 65rem;
+  height: fit-content;
+  margin-bottom: 100px;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+#pic{
+  height: 500px;
+}

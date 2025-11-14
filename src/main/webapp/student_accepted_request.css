@@ -1,0 +1,70 @@
+.leave-app-table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.leave-app-table th {
+    background-color: #3498db;
+    color: white;
+}
+.leave-app-table tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Light gray for odd rows */
+}
+
+.leave-app-table tr:nth-child(even) {
+    background-color: #e0e0e0; /* Slightly darker gray for even rows */
+}
+.leave-app-table tr:hover {
+    background-color:  rgb(204, 238, 255); /* Light blue for row hover */
+}
+.leave-app-table th, .leave-app-table td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+}
+
+
+
+.leave-app-actions button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.accept-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.reject-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.view-button {
+    background-color: #007BFF;
+    color: white;
+}
+
+.leave-app-actions button:hover {
+    filter: brightness(1.2);
+}
+.download a{
+    position: relative;
+    
+    color: rgb(235, 237, 246);
+  }
+  .download a:hover{
+   color:rgb(14, 19, 56);
+  }
+  .download{
+    position: relative;
+    
+    height: 30px;
+    text-align: right;
+    margin-right: 37px;
+   margin-bottom: 6px;
+    z-index: 9;
+  }

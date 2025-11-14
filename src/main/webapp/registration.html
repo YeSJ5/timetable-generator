@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="hostel.jpeg" style="background-color: white;">
+  <title>SGGS Hostel Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="registration.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="top">
+
+  <div class="header">
+    <img src="collage_logo.png" alt="logo" />
+    <h1>SHRI GURU GOBIND SINGHJI <br> INSTITUTE OF ENGINEERING AND TECHNOLOGY, <br> VISHNUPURI, NANDED : 431606  <br><span class="font_header">(An Autonomous Institute Owned by Government of Maharashtra)</span>
+     <br>
+    <br ></h1>
+  </div>
+</div>
+<div class="mains">
+  
+    <div class="left">
+        <h3>Admin Pannel</h3>
+       
+          <div class="line">
+            <i class="fa-solid fa-code-pull-request"></i>
+            <a class="side_h" style="display: inline; " href="request.html">Request </a>
+          </div>
+          
+          <div class="line">
+            <i class="fa-solid fa-address-card"></i>
+            <a class="side_h" style="display: inline;" href="registration.html">Registration</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-person"></i>
+            <a class="side_h" style="display: inline;" href="student.html">&nbsp;Students</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-gear"></i>
+            <a class="side_h" style="display: inline;" href="setting.html">Settings</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a class="side_h" style="display: inline;" href="#">Log Out</a>
+          </div>
+        <hr>
+        <a class="side_a" href="#"><br>Rules and regulations</a>
+        <br>
+        
+        <h3 class="auto_h">Auto Refresh</h3>
+        <label class="switch">
+          <input type="checkbox" checked>
+          <label class="switch">
+            <input type="checkbox" unchecked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+    </div>
+    <div class="other">
+        <div class="top_s">
+            <div class="left_s">
+                <h2 style="margin-top: 0;">Room Vacancy Table</h2>
+                <table class="floor-table">
+                    
+                    <tr>
+                        <th>Block</th>
+                        <th>Ground Floor</th>
+                        <th>1st Floor</th>
+                        <th>2nd Floor</th>
+                        <th>3rd Floor</th>
+                        <th class="total-column">Total</th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td class="total-column">19</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>5</td>
+                        <td class="total-column">21</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>6</td>
+                        <td class="total-column">15</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td class="total-column">19</td>
+                    </tr>
+                    <tr class="total-row">
+                        <th>Total</th>
+                        <td>18</td>
+                        <td>15</td>
+                        <td>23</td>
+                        <td>18</td>
+                        <td class="total-column">74</td>
+                    </tr>
+                </table>
+                
+            </div>
+            <div class="right_s1">
+                <div class="form-container">
+                <h2 class="form-heading" style="margin-top: 0;">Student Vacancy Form</h2>
+                <form>
+                    <div class="row1">
+                    <div class="form-row">
+                        <label for="year" class="form-label">Select Year:</label>
+                        <select id="year" name="year" class="form-select">
+                            <option value="FY">FY</option>
+                            <option value="SY">SY</option>
+                            <option value="TY">TY</option>
+                            <option value="BTech">BTech</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-row">
+                        <label for="numStudents" class="form-label">Number of Students:</label>
+                        <input placeholder="296 vacant" type="number" id="numStudents" name="numStudents" class="form-input" min="0">
+                    </div>
+                </div>
+                  
+                    <div class="zero">
+                    <div class="one">
+                    <label for="cse" class="form-label">CSE:</label>
+                    <input type="number" id="cse" name="cse" class="form-input" min="0">
+        
+                    <label for="it" class="form-label">IT:</label>
+                    <input type="number" id="it" name="it" class="form-input" min="0">
+        
+                    <label for="extc" class="form-label">EXTC:</label>
+                    <input type="number" id="extc" name="extc" class="form-input" min="0">
+                        
+                </div>
+                <div class="two">
+                    <label for="instru" class="form-label">Instru:</label>
+                    <input type="number" id="instru" name="instru" class="form-input" min="0">
+               
+                    <label for="prod" class="form-label">Prod:</label>
+                    <input type="number" id="prod" name="prod" class="form-input" min="0">
+                
+                
+                    <label for="chem" class ="form-label">Chem:</label>
+                    <input type="number" id="chem" name="chem" class="form-input" min="0">
+
+                </div>
+                <div class="three">
+                    <label for="civil" class="form-label">Civil:</label>
+                    <input type="number" id="civil" name="civil" class="form-input" min="0">
+               
+                    <label for="textile" class="form-label">Text:</label>
+                    <input type="number" id="textile" name="textile" class="form-input" min="0">
+        
+                    <label for="mech" class="form-label">Mech:</label>
+                    <input type="number" id="mech" name="mech" class="form-input" min="0">
+                </div>
+                <div class="four">
+                    <label for="elec" class="form-label">Elec:</label>
+                    <input type="number" id="elec" name="elec" class="form-input" min="0">
+                    <input style="margin-top: 43px;left: 20px; position: relative; width: auto;" type="submit" value="Submit" class="form-submit">
+                </div>
+            </div>
+        
+                    
+                </form>
+        
+            </div>
+            
+        </div>
+        <div class="right_s2">
+         
+           
+        </div>
+        </div>
+        
+        <div class="bottom_s">
+          
+          <table class="leave-app-table">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Reg No</th>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Branch</th>
+                    <th>Purpose</th>
+                    <th>Phone</th>
+                    <th>Eamil</th>
+                    <th>Address</th>
+                    <th ><div class="download">
+                      <a href="#"><i class="fa-sharp fa-solid fa-circle-down  fa-2xl" title="Download the Table"></i></a>
+                      
+                  </div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>123456</td>
+                    <td>John Doe</td>
+                    <td>3rd Year</td>
+                    <td>Computer Science</td>
+                    <td>education</td>
+                    <td>2333232202</td>
+                    <td>2021bcs050</td>
+                    <td>nanded</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(1)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(1)">Reject</button>
+                        
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+                <tr>
+                    <td>2</td>
+                    <td>789012</td>
+                    <td>Jane Smith</td>
+                    <td>2nd Year</td>
+                    <td>Electrical Engineering</td>
+                    <td>Vacation</td>
+                    <td>3 days</td>
+                    <td>2023-11-03</td>
+                    <td>2023-11-06</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(2)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(2)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(2)">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>456789</td>
+                    <td>Alice Johnson</td>
+                    <td>4th Year</td>
+                    <td>Mechanical Engineering</td>
+                    <td>Conference</td>
+                    <td>1 day</td>
+                    <td>2023-11-07</td>
+                    <td>2023-11-07</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(3)">Accept</button>
+                        <button class ="reject-button" onclick="rejectRequest(3)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(3)">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>987654</td>
+                    <td>Mary Johnson</td>
+                    <td>1st Year</td>
+                    <td>Chemistry</td>
+                    <td>Lecture</td>
+                    <td>2 hours</td>
+                    <td>2023-11-10</td>
+                    <td>2023-11-10</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(4)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(4)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(4)">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>555555</td>
+                    <td>Bob Johnson</td>
+                    <td>2nd Year</td>
+                    <td>Physics</td>
+                    <td>Research</td>
+                    <td>4 days</td>
+                    <td>2023-11-15</td>
+                    <td>2023-11-19</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(5)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(5)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(5)">View</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+        </div>
+    </div>
+     
+     
+
+
+  </div>
+</div>  
+</body>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="hostel.jpeg" style="background-color: white;">
+  <title>SGGS Hostel Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="registration.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="top">
+
+  <div class="header">
+    <img src="collage_logo.png" alt="logo" />
+    <h1>SHRI GURU GOBIND SINGHJI <br> INSTITUTE OF ENGINEERING AND TECHNOLOGY, <br> VISHNUPURI, NANDED : 431606  <br><span class="font_header">(An Autonomous Institute Owned by Government of Maharashtra)</span>
+     <br>
+    <br ></h1>
+  </div>
+</div>
+<div class="mains">
+  
+    <div class="left">
+        <h3>Admin Pannel</h3>
+       
+          <div class="line">
+            <i class="fa-solid fa-code-pull-request"></i>
+            <a class="side_h" style="display: inline; " href="request.html">Request </a>
+          </div>
+          
+          <div class="line">
+            <i class="fa-solid fa-address-card"></i>
+            <a class="side_h" style="display: inline;" href="registration.html">Registration</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-person"></i>
+            <a class="side_h" style="display: inline;" href="student.html">&nbsp;Students</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-gear"></i>
+            <a class="side_h" style="display: inline;" href="setting.html">Settings</a>
+          </div>
+          <div class="line">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a class="side_h" style="display: inline;" href="#">Log Out</a>
+          </div>
+        <hr>
+        <a class="side_a" href="#"><br>Rules and regulations</a>
+        <br>
+        
+        <h3 class="auto_h">Auto Refresh</h3>
+        <label class="switch">
+          <input type="checkbox" checked>
+          <label class="switch">
+            <input type="checkbox" unchecked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+    </div>
+    <div class="other">
+        <div class="top_s">
+            <div class="left_s">
+                <h2 style="margin-top: 0;">Room Vacancy Table</h2>
+                <table class="floor-table">
+                    
+                    <tr>
+                        <th>Block</th>
+                        <th>Ground Floor</th>
+                        <th>1st Floor</th>
+                        <th>2nd Floor</th>
+                        <th>3rd Floor</th>
+                        <th class="total-column">Total</th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td class="total-column">19</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>5</td>
+                        <td class="total-column">21</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>6</td>
+                        <td class="total-column">15</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td class="total-column">19</td>
+                    </tr>
+                    <tr class="total-row">
+                        <th>Total</th>
+                        <td>18</td>
+                        <td>15</td>
+                        <td>23</td>
+                        <td>18</td>
+                        <td class="total-column">74</td>
+                    </tr>
+                </table>
+                
+            </div>
+            <div class="right_s1">
+                <div class="form-container">
+                <h2 class="form-heading" style="margin-top: 0;">Student Vacancy Form</h2>
+                <form>
+                    <div class="row1">
+                    <div class="form-row">
+                        <label for="year" class="form-label">Select Year:</label>
+                        <select id="year" name="year" class="form-select">
+                            <option value="FY">FY</option>
+                            <option value="SY">SY</option>
+                            <option value="TY">TY</option>
+                            <option value="BTech">BTech</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-row">
+                        <label for="numStudents" class="form-label">Number of Students:</label>
+                        <input placeholder="296 vacant" type="number" id="numStudents" name="numStudents" class="form-input" min="0">
+                    </div>
+                </div>
+                  
+                    <div class="zero">
+                    <div class="one">
+                    <label for="cse" class="form-label">CSE:</label>
+                    <input type="number" id="cse" name="cse" class="form-input" min="0">
+        
+                    <label for="it" class="form-label">IT:</label>
+                    <input type="number" id="it" name="it" class="form-input" min="0">
+        
+                    <label for="extc" class="form-label">EXTC:</label>
+                    <input type="number" id="extc" name="extc" class="form-input" min="0">
+                        
+                </div>
+                <div class="two">
+                    <label for="instru" class="form-label">Instru:</label>
+                    <input type="number" id="instru" name="instru" class="form-input" min="0">
+               
+                    <label for="prod" class="form-label">Prod:</label>
+                    <input type="number" id="prod" name="prod" class="form-input" min="0">
+                
+                
+                    <label for="chem" class ="form-label">Chem:</label>
+                    <input type="number" id="chem" name="chem" class="form-input" min="0">
+
+                </div>
+                <div class="three">
+                    <label for="civil" class="form-label">Civil:</label>
+                    <input type="number" id="civil" name="civil" class="form-input" min="0">
+               
+                    <label for="textile" class="form-label">Text:</label>
+                    <input type="number" id="textile" name="textile" class="form-input" min="0">
+        
+                    <label for="mech" class="form-label">Mech:</label>
+                    <input type="number" id="mech" name="mech" class="form-input" min="0">
+                </div>
+                <div class="four">
+                    <label for="elec" class="form-label">Elec:</label>
+                    <input type="number" id="elec" name="elec" class="form-input" min="0">
+                    <input style="margin-top: 43px;left: 20px; position: relative; width: auto;" type="submit" value="Submit" class="form-submit">
+                </div>
+            </div>
+        
+                    
+                </form>
+        
+            </div>
+            
+        </div>
+        <div class="right_s2">
+         
+           
+        </div>
+        </div>
+        
+        <div class="bottom_s">
+          
+          <table class="leave-app-table">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Reg No</th>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Branch</th>
+                    <th>Purpose</th>
+                    <th>Phone</th>
+                    <th>Eamil</th>
+                    <th>Address</th>
+                    <th ><div class="download">
+                      <a href="#"><i class="fa-sharp fa-solid fa-circle-down  fa-2xl" title="Download the Table"></i></a>
+                      
+                  </div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>123456</td>
+                    <td>John Doe</td>
+                    <td>3rd Year</td>
+                    <td>Computer Science</td>
+                    <td>education</td>
+                    <td>2333232202</td>
+                    <td>2021bcs050</td>
+                    <td>nanded</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(1)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(1)">Reject</button>
+                        
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+                <tr>
+                    <td>2</td>
+                    <td>789012</td>
+                    <td>Jane Smith</td>
+                    <td>2nd Year</td>
+                    <td>Electrical Engineering</td>
+                    <td>Vacation</td>
+                    <td>3 days</td>
+                    <td>2023-11-03</td>
+                    <td>2023-11-06</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(2)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(2)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(2)">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>456789</td>
+                    <td>Alice Johnson</td>
+                    <td>4th Year</td>
+                    <td>Mechanical Engineering</td>
+                    <td>Conference</td>
+                    <td>1 day</td>
+                    <td>2023-11-07</td>
+                    <td>2023-11-07</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(3)">Accept</button>
+                        <button class ="reject-button" onclick="rejectRequest(3)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(3)">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>987654</td>
+                    <td>Mary Johnson</td>
+                    <td>1st Year</td>
+                    <td>Chemistry</td>
+                    <td>Lecture</td>
+                    <td>2 hours</td>
+                    <td>2023-11-10</td>
+                    <td>2023-11-10</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(4)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(4)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(4)">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>555555</td>
+                    <td>Bob Johnson</td>
+                    <td>2nd Year</td>
+                    <td>Physics</td>
+                    <td>Research</td>
+                    <td>4 days</td>
+                    <td>2023-11-15</td>
+                    <td>2023-11-19</td>
+                    <td class="leave-app-actions">
+                        <button class="accept-button" onclick="acceptRequest(5)">Accept</button>
+                        <button class="reject-button" onclick="rejectRequest(5)">Reject</button>
+                        <button class="view-button" onclick="viewDetails(5)">View</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+        </div>
+    </div>
+     
+     
+
+
+  </div>
+</div>  
+</body>
+</html>tml>

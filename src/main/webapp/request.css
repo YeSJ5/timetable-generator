@@ -1,0 +1,351 @@
+body {
+    margin: 0;
+    overflow:visible;
+    position:auto;
+    padding-bottom: 0;
+    background-color:rgb(233, 233, 233);
+    text-align: justify;
+    
+  }
+.top{  
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 8;
+    background:linear-gradient(230deg,
+    #60A3D9 40%,
+    #0c5191 60%);
+    border-bottom: solid rgb(0, 0, 0);
+    border-top:solid rgb(58, 53, 53);
+    box-shadow: 5px 5px 10px rgb(31, 29, 29);
+    margin: 0;
+    overflow: visible;
+}
+
+
+.mains{
+    position: relative;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    top: 100px;
+}
+
+.left {
+  z-index: 7;
+  background-color: hwb(195 58% 41%);
+  margin-left: 0px;
+  margin-right: 5px;
+  margin-top: 0px;
+  padding: 10px;
+  width: 200px;
+  position: fixed;
+  height: 100%;
+  box-shadow: 3px  2px  8px black;
+}
+.other{
+  position: relative;
+  left: 240px;
+  margin-top: 20px;
+}
+
+.side_h {
+  display: inline;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  
+}
+.line{
+  display: block;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+}
+.side_a{
+  top: 30px;
+  font-size: 19px;
+  text-decoration: underline;
+}
+
+.but{
+  text-decoration:none;
+  font-size: 20px;
+  width: 200px;
+  height: 25px;
+  margin: 25px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: #6CB4EE;
+  border: black solid 3px;
+  border-radius: 10px;
+}
+.but a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.but:hover{
+  background-color: rgb(0, 166, 255);
+}
+.header img {
+  float: left;
+  width: 80px;
+  height: 78px;
+  margin-left:10px;
+}
+.header h1 {
+  position: relative;
+  left: 10px;
+  font-size: 18px;
+  font-family: 'Roboto Slab', serif;
+}
+.font_header{
+  font-size: 15px;
+}
+  a {
+    color: black;
+  }
+  
+  .line:hover,
+  .line:focus {
+    background-color:rgb(20, 191, 214);
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    bottom: 29px;
+    left: 66px;
+    width: 45px;
+    height: 20px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(25px);
+    -ms-transform: translateX(25px);
+    transform: translateX(24px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+a{
+text-decoration: none;
+}
+a.side_a:hover{
+text-shadow: black 2px 5px 5px;
+}
+.app{
+    display: flex;
+}
+.left_app{
+    width: 50%;
+}
+.right_app{
+    margin-left: 10px;
+}
+.tables{
+    display: flex;
+}
+.application{
+    position: relative;
+    overflow: auto;
+    float: left;
+    width: 630px;
+    height: 520px;
+    border: 1px solid black ;
+}
+.complaint{
+    overflow: auto;
+    float: left;
+    margin-left: 20px;
+    position: relative;
+    width: 630px;
+    height: 520px;
+    border: 1px solid black;
+   
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+td{
+    border: 1px solid black;
+}
+
+thead th {
+  background-color: #dfdddd;
+}
+
+/* Style for alternate rows with different background colors */
+tbody tr:nth-child(even) {
+  background-color: #dcdcdc; /* Change to your preferred color */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* Change to your preferred color */
+}
+tbody tr:hover {
+  background-color: #e2e5eb;
+}
+
+.sr-no, .date, .reason, .subject, .description, .status, .room-no {
+    padding: 5px; /* Increase the padding for Sr No and Reason columns */
+}
+.reason{
+    width: 200px;
+}
+
+.date {
+    width: 70px; 
+}
+
+.sr-no {
+    width: 10px; /* Decrease the width for Sr No column */
+}
+.reg-no{
+    width: 70px;
+}
+.extra{
+    width: 189px;
+}
+.subject{
+    width: 150px;
+}
+.description{
+    width: 500px;
+}
+/* Define specific styles for the "Status" column */
+.status {
+    width: 80px;
+    font-weight: bold;
+}
+.room-no{
+    width: 80px;
+    
+}
+tr td {
+    font-size: 12px; /* Decrease the font size for rows, except the first row */
+}
+tr th, tr td {
+    border-left: none; /* Remove left border for all cells */
+    border-right: none; /* Remove right border for all cells */
+}
+.accept-button {
+    padding: 5px 5px;
+    font-size: 12px;
+    margin-right: 5px;
+    background-color: #05a10b; /* Green color for "Accept" button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded border */
+    box-shadow: 0px 0px 3px 1px #888888; /* Shadow effect */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.reject-button {
+    font-size: 12px;
+    padding: 5px 5px;
+    margin-right: 5px;
+    background-color: #e03610; /* Red color for "Reject" button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded border */
+    box-shadow: 0px 0px 3px 1px #888888; /* Shadow effect */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.details-button {
+    font-size: 12px;
+    padding: 5px 5px;
+    margin-right: 5px;
+    background-color: #797777; /* Gray color for "Details" button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded border */
+    box-shadow: 0px 0px 3px 1px #888888; /* Shadow effect */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+/* Add hover effect for the buttons */
+.accept-button:hover {
+    background-color: #45a049; /* Darker green */
+    box-shadow: 0px 0px 5px 2px #888888; /* Larger shadow on hover */
+}
+
+.reject-button:hover {
+    background-color: #FF3211; /* Darker red */
+    box-shadow: 0px 0px 5px 2px #888888; /* Larger shadow on hover */
+}
+
+.details-button:hover {
+    background-color: #606060; /* Darker gray */
+    box-shadow: 0px 0px 5px 2px #888888; /* Larger shadow on hover */
+}
+thead{
+    position: sticky;
+    top: 0;
+}
